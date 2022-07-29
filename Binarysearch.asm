@@ -30,7 +30,7 @@
         mov dx, ax       ; move dx to ax, change upper bound to mid - 1
         jmp searchloop   ; start the searchloop again
 
-     high:               ; label big
+     high:               ; label high
         je match         ; if mid element = cx, jump to match else continue
         inc ax           ; increment ax by one to get mid + 1
         mov bx, ax       ; move ax to bx, change lower bound to mid + 1
@@ -47,7 +47,7 @@
      fail:               ; label fail
         lea dx, msg2     ; load effective address of msg2 in dx
 
-     display:               ; label disp
+     display:            ; label display
         mov ah, 09h      ; to print content present in dx
         int 21h
         mov ah, 4ch      ; terminate with return code
