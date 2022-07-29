@@ -1,9 +1,9 @@
 .model small                           ; assembler directive to allocate memory
 
 .data                                  ; data segment
-    arr dw 0, 1, 2, 3, 4, 5, 6, 7, 8, 9      ; array of 10 16-bit numbers
+    arr dw 12, 23, 34, 45, 56, 67, 76, 87, 92, 99      ; array ofsorted 10 numbers
     len dw ($-arr)/2                   ; length of the array
-    key equ 8                          ; key to be searched
+    key equ 56                          ; key to be searched
     msg1 db "key is found at "         ; message 1 to print if key is found
     res db "  position $"              ; message 2 to print if key is found
     msg2 db 'key is not found!!!.$'    ; message to print if key is not found
@@ -30,7 +30,7 @@
         mov dx, ax       ; move dx to ax, change upper bound to mid - 1
         jmp searchloop   ; start the searchloop again
 
-     high:               ; label high
+     high:               ; label big
         je match         ; if mid element = cx, jump to match else continue
         inc ax           ; increment ax by one to get mid + 1
         mov bx, ax       ; move ax to bx, change lower bound to mid + 1
@@ -47,7 +47,7 @@
      fail:               ; label fail
         lea dx, msg2     ; load effective address of msg2 in dx
 
-     display:            ; label display
+     display:               ; label disp
         mov ah, 09h      ; to print content present in dx
         int 21h
         mov ah, 4ch      ; terminate with return code
